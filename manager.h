@@ -14,6 +14,7 @@ enum Menu {
     LIST,
     CREATE,
     SEARCH,
+    LOAD,
     SAVE
 };
 
@@ -26,6 +27,7 @@ void searchProduct(Product *p[], int count);
 void searchProductName(Product *p[], int count);
 void searchProductInfo(Product *p[], int count);
 void searchProductPrice(Product *p[], int count);
+int loadFromFile(char *filename, Product *p[], int *count);
 int saveAsFile(char *filename, Product *p[], int count);
 
 #endif  // __MANAGER_H__
