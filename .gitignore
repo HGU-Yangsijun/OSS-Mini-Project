@@ -114,5 +114,7 @@ tags
 shopping_mall
 shopping_mall_debug
 
+# text file
+*.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/linux,c,cmake,vim
