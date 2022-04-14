@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/linux,c,vim
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,c,vim
+# Created by https://www.toptal.com/developers/gitignore/api/linux,c,cmake,vim
+# Edit at https://www.toptal.com/developers/gitignore?templates=linux,c,cmake,vim
 
 ### C ###
 # Prerequisites
@@ -56,6 +56,23 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+### CMake ###
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps
+
+### CMake Patch ###
+# External projects
+*-prefix/
+
 ### Linux ###
 *~
 
@@ -91,4 +108,11 @@ tags
 # Persistent undo
 [._]*.un~
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,c,vim
+
+#------------------------
+# Executable File
+shopping_mall
+shopping_mall_debug
+
+
+# End of https://www.toptal.com/developers/gitignore/api/linux,c,cmake,vim
