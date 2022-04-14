@@ -185,12 +185,13 @@ int loadFromFile(char *filename, Product *p[], int *count) {
     }
 
     while (!feof(fp)) {
-        fscanf(fp, "%[^;\n]%s", p[*count]->name);
-        fscanf(fp, "%[^;\n]%s", p[*count]->info);
-        fscanf(fp, "%[^;\n]%s", p[*count]->weight);
+        fgets(fp, "%s", p[*count]->name);
+        p[*count]->name[strlen(p[*count]->name) - 1] = '\0';
+        fgets(fp, "%s", p[*count]->info);
+        p[*count]->info[strlen(p[*count]->info) - 1] = '\0';
+        fgets(fp, "%s", p[*count]->weight);
+        p[*count]->weight[strlen(p[*count]->weight) - 1] = '\0';
         fscanf(fp, "%d", &p[*count]->price);
-        char temp;
-        fscanf(fp, "%c", &temp);
         fscanf(fp, "%d", &p[*count]->deliveryType);
         (*count)++;
     }
