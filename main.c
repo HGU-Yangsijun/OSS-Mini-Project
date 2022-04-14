@@ -33,8 +33,11 @@ int main() {
             case SEARCH:
                 searchProduct(p, cnt);
                 break;
+            case LOAD:
+                loadFromFile("input.txt", p, &cnt);
+                break;
             case SAVE:
-                saveAsFile("a.txt", p, cnt);
+                saveAsFile("output.txt", p, cnt);
                 break;
             case QUIT:
                 stop = 1;
