@@ -9,7 +9,8 @@ void printMenu() {
     printf("1. 제품 목록\n");
     printf("2. 제품 추가\n");
     printf("3. 제품 검색\n");
-    printf("4. 제품 목록 저장\n");
+    printf("4. 제품 목록 불러오기\n");
+    printf("5. 제품 목록 저장\n");
     printf("0. 종료\n");
 }
 
@@ -21,7 +22,7 @@ int chooseMenu() {
         printf("메뉴를 입력하시오: ");
         scanf("%d", &menu);
 
-        if (menu >= 0 && menu <= 4)
+        if (menu >= 0 && menu <= 5)
             return menu;
         else
             printf("잘못된 입력!\n");
@@ -102,7 +103,8 @@ void searchProduct(Product *p[], int count) {  // 제품 검색
 void searchProductName(Product *p[], int count) {
     char searchName[256];
     printf("검색할 제품명을 입력하세요: ");
-    while (getchar() != '\n');
+    while (getchar() != '\n')
+        ;
     fgets(searchName, sizeof(searchName), stdin);
     searchName[strlen(searchName) - 1] = '\0';
 
@@ -173,6 +175,29 @@ void searchProductPrice(Product *p[], int count) {
     if (scnt == 0) {
         printf("검색 결과가 없습니다!\n");
     }
+}
+
+int loadFromFile(char *filename, Product *p[], int *count) {
+    FILE *fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("파일 불러오기에 실패했습니다.\n");
+        return -1;
+    }
+
+    while (!feof(fp)) {
+        fscanf_s(fp, "%[^;\n]%s", p[*count]->name, sizeof(p[*count]->name));
+        fscanf_s(fp, "%[^;\n]%s", p[*count]->info, sizeof(p[*count]->info));
+        fscanf_s(fp, "%[^;\n]%s", p[*count]->weight, sizeof(p[*count]->weight));
+        fscanf(fp, "%d", &p[*count]->price);
+        char temp;
+        fscanf(fp, "%c", &temp);
+        fscanf(fp, "%d", &p[*count]->deliveryType);
+        (*count)++;
+    }
+
+    fclose(fp);
+
+    return *count;
 }
 
 int saveAsFile(char *filename, Product *p[], int count) {
