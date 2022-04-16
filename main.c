@@ -3,9 +3,9 @@
 #include <string.h>
 
 #include "manager.h"
+#include "product.h"
 
 int main() {
-
 #ifdef DEBUG
     printf("=> DEBUGMODE\n");
 #endif

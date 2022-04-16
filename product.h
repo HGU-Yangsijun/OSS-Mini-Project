@@ -20,11 +20,7 @@ enum Menu {
 
 #endif  // __PRODUCT_H__
 
-int listProduct(Product *p[], int count);
-void searchProduct(Product *p[], int count);
-void searchProductName(Product *p[], int count);
-void searchProductInfo(Product *p[], int count);
-void searchProductPrice(Product *p[], int count);
-int loadFromFile(char *filename, Product *p[], int *count);
-int saveAsFile(char *filename, Product *p[], int count);
-
+void printMenu();
+int chooseMenu();
+int createProduct(Product *p);
+int readProduct(Product p);
